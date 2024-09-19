@@ -15,7 +15,7 @@ FetchContent_MakeAvailable(SFML)
 
 add_executable(${PROJECT_NAME} src/main.cpp)
 target_link_libraries(${PROJECT_NAME} PRIVATE sfml-graphics)
-target_link_libraries(${PROJECT_NAME} PRIVATE sfml-graphics sfml-audio)
+target_link_libraries(${PROJECT_NAME} PRIVATE sfml-audio)
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20)
 
 # Copy the assets folder (with subfolders) to the output directory
