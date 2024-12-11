@@ -5,6 +5,9 @@ int main()
     auto window = sf::RenderWindow{ { 1920u, 1080u }, "CMake SFML Project" };
     window.setFramerateLimit(144);
 
+    sf::CircleShape shape(100.f);
+    shape.setFillColor(sf::Color::Green);
+
     while (window.isOpen())
     {
         for (auto event = sf::Event{}; window.pollEvent(event);)
@@ -16,6 +19,7 @@ int main()
         }
 
         window.clear();
+        window.draw(shape);
         window.display();
     }
 }

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.30.3)
-project(Project_Name LANGUAGES CXX)
+project(Cuties_Tetris LANGUAGES CXX)
 
 # Output directories
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
@@ -21,8 +21,12 @@ FetchContent_Declare(SFML
     SYSTEM)
 FetchContent_MakeAvailable(SFML)
 
+# Add source and header files
+file(GLOB_RECURSE SOURCES "src/*.cpp")
+file(GLOB_RECURSE HEADERS "include/*.h")
+
 # Add executable and specify source files
-add_executable(${PROJECT_NAME} src/main.cpp)
+add_executable(${PROJECT_NAME} ${SOURCES})
 
 # Add include directory and make it visible in VS
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/include)
@@ -32,6 +36,11 @@ target_link_libraries(${PROJECT_NAME} PRIVATE sfml-graphics sfml-audio)
 
 # Ensure C++20 is enabled
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20)
+
+# Define SFML_STATIC if building statically (optional)
+if(WIN32 AND NOT BUILD_SHARED_LIBS)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE SFML_STATIC)
+endif()
 
 # Copy the assets folder (with subfolders) to the output directory after build
 add_custom_command(
