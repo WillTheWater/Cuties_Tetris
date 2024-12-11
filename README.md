@@ -1,5 +1,4 @@
-**Cutie's Tetris:**  
-The Ultimate Holy-Grail Clicker Adventure  
+**Cutie's Tetris:** 
 My wife wanted me to make Tetris for her.
 
 ## Development
